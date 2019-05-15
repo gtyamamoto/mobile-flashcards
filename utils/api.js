@@ -1,7 +1,7 @@
 import {AsyncStorage} from 'react-native'
 const API_KEY = 'flashcards:decks';
 import _ from 'lodash'
-
+//route to add new deck at local storage
 export async function addNewDeck(title){
   const decks = await AsyncStorage.getItem(API_KEY);
   if(!decks) {//theres no deck
@@ -30,13 +30,14 @@ export async function addNewDeck(title){
   }
 
 }
+//get deck information
 export async function getDeck(id){
     const decks = JSON.parse(await AsyncStorage.getItem(API_KEY));
     if(!decks) return null;//no decks added
     if(!decks[id]) return null; // no deck with given id
     return decks[id];
 }
-
+//add a card to a deck
 export async function addCardToDeck(title,card){
   const decks = JSON.parse(await AsyncStorage.getItem(API_KEY));
   if(!decks) return null;//no decks added

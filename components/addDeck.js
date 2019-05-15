@@ -29,8 +29,8 @@ export default withNavigation(({navigation})=>{
         onChangeText={(text) => setTitle(text)}
         value={title}
       />
-            <TouchableOpacity onPress={onAddNewDeck}>
-            <Text style={styles.button}>Submit</Text>   
+            <TouchableOpacity style={styles.button} onPress={onAddNewDeck}>
+            <Text >Submit</Text>   
             </TouchableOpacity>
         </View>
      )

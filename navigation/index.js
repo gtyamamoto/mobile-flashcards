@@ -4,13 +4,14 @@ import {
     createAppContainer
 } from "react-navigation";
 import React from 'react';
-import {TouchableOpacity,Text} from 'react-native'
 import DeckList from "../components/decksList";
 import { white, black, red } from "../utils/colors";
 import AddDeck from "../components/addDeck";
-import AddQuiz from "../components/addQuiz";
+import AddCard from "../components/addCard";
 import Deck from "../components/deck";
 import Quiz from "../components/quiz";
+
+//tab component navigation only for decks and add deck
 const Tabs = createBottomTabNavigator(
   {
     Decks: {
@@ -44,6 +45,7 @@ const Tabs = createBottomTabNavigator(
     }
   }
 );
+//stack main component for navigation
 const MainNavigator = createStackNavigator({
   Home: {
     screen: Tabs
@@ -59,8 +61,8 @@ const MainNavigator = createStackNavigator({
       }
     })
   },
-  AddQuiz: {
-    screen: AddQuiz,
+  AddCard: {
+    screen: AddCard,
     path: "newcard/:deck",
     navigationOptions: ({ navigation }) => ({
       title: `Add a Card to the  Deck ${navigation.state.params.deck}`,
@@ -72,7 +74,7 @@ const MainNavigator = createStackNavigator({
   },
   Quiz: {
     screen: Quiz,
-    path: "quiz/:deck",
+    path: "quiz",
     navigationOptions: ({ navigation }) => ({
       title: `Quiz`,
       headerTintColor: white,
@@ -83,4 +85,5 @@ const MainNavigator = createStackNavigator({
   }
 
 },{ initialRouteName: 'Home' });
+//exports as a component to be rendered in the App.js
 export default createAppContainer(MainNavigator)
